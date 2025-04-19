@@ -13,7 +13,7 @@
 
    ```bash
    git clone <repository-url>
-   cd framely
+   cd Framely
    ```
 
 2. Install dependencies:
@@ -34,7 +34,7 @@
 
    Edit the `.env` file with your specific configuration values.
 
-4. Start the PostgreSQL database:
+4. Start the MySQL database:
 
    ```bash
    docker-compose up -d
