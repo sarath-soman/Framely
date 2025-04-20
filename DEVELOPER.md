@@ -79,7 +79,7 @@
 
 ## Database Management
 
-The project uses PostgreSQL with Prisma as the ORM. The database runs in a Docker container.
+The project uses MySQL with Prisma as the ORM. The database runs in a Docker container.
 
 To access the database:
 
