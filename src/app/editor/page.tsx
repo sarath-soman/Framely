@@ -16,18 +16,22 @@ type Props = {
 const Page = async ({ params }: Props) => {
   const session = {
     userId: "user_2",
-  }
+  };
 
   const { siteId } = await params;
   const siteDetails = {
-      userId: "user_2",
-      id: siteId,
-      title: "Hello World!",
-      subdomain: "gbg",
-      previewImage: "",
-      content: {},
-      visible: true,
-    }
+    id: "cmavbussf00000p84hm2mpjba",
+    userId: "user_2",
+    title: "Example",
+    previewImage: null,
+    favicon: null,
+    visible: false,
+    content:
+      '[{"content":[{"content":{"innerText":"Test"},"id":"u358yenwyef5yit8q265s72s","name":"Heading 1","styles":{"color":"#ffffff","backgroundPosition":"center","objectFit":"cover","backgroundRepeat":"no-repeat","textAlign":"left","opacity":"100%","fontSize":"2.5rem","fontWeight":"700","lineHeight":"1.2","marginBottom":"0.5rem"},"type":"h1","category":"Text"},{"content":{"innerText":"Writing a WYSIWYG editor.\\nAsadasda, asdassda das das dad \\nadsasdasda dsa sda sd asd asd asd"},"id":"j18t8xaskrvilrj926ufx4hy","name":"Paragraph","styles":{"color":"#fdfdfd","backgroundPosition":"center","objectFit":"cover","backgroundRepeat":"no-repeat","textAlign":"left","opacity":"100%","fontSize":"1rem","lineHeight":"1.5","marginBottom":"1rem"},"type":"p","category":"Text"}],"id":"__body","name":"Body","styles":{},"type":"__body","category":"Container"}]',
+    subdomain: "example",
+    createdAt: "2025-05-19T16:56:37.695Z",
+    updatedAt: "2025-05-19T17:01:16.438Z",
+  };
 
   // TODO: Display access denied page, add ability for users to request access (?)
   if (!siteDetails || !(session.userId === siteDetails.userId)) {
