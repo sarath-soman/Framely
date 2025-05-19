@@ -1,11 +1,9 @@
 "use client";
-import { upsertSite } from "@/lib/actions/page";
 import { DeviceTypes, useEditor } from "@/app/providers/editor-provider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Page } from "@prisma/client";
 import {
   ArrowUpRightFromSquare,
   ChevronLeft,
@@ -25,7 +23,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { getLink } from "@/lib/getLink";
 
 type Props = {
-  siteDetails: Page;
+  siteDetails: any;
 };
 
 const EditorNavigation = ({ siteDetails }: Props) => {
@@ -46,10 +44,18 @@ const EditorNavigation = ({ siteDetails }: Props) => {
   ) => {
     if (event.target.value && event.target.value !== siteDetails.title) {
       setTitleLoading(true);
-      const res = await upsertSite({
-        title: event.target.value,
-        id: siteDetails.id,
-      });
+      const res = {
+        success: true,
+        msg: "",
+        site: {
+          id: siteDetails.id,
+          title: event.target.value,
+          subdomain: siteDetails.subdomain,
+          previewImage: null,
+          content: "<h1>Hello World</h1>",
+          visible: true,
+        },
+      }
 
       if (res.success === false) {
         toast("Error", { description: res.msg });
@@ -82,10 +88,18 @@ const EditorNavigation = ({ siteDetails }: Props) => {
       payload: { value: checked },
     });
 
-    const res = await upsertSite({
-      visible: checked,
-      id: siteDetails.id,
-    });
+    const res = {
+      success: true,
+      msg: "",
+      site: {
+        id: siteDetails.id,
+        title: siteDetails.title,
+        subdomain: siteDetails.subdomain,
+        previewImage: null,
+        content: "<h1>Hello World</h1>",
+        visible: checked,
+      },
+    }
 
     if (res.success === false) {
       toast("Error", { description: res.msg });
@@ -104,10 +118,18 @@ const EditorNavigation = ({ siteDetails }: Props) => {
 
   const handleOnSave = async () => {
     setIsSaving(true);
-    const res = await upsertSite({
-      id: siteDetails.id,
-      content: JSON.stringify(state.editor.elements),
-    });
+    const res = {
+      success: true,
+      msg: "",
+      site: {
+        id: siteDetails.id,
+        title: siteDetails.title,
+        subdomain: siteDetails.subdomain,
+        previewImage: null,
+        content: "<h1>Hello World</h1>",
+        visible: state.editor.visible,
+      },
+    }
     if (!res.success) {
       toast("Error", { description: res.msg });
     } else {

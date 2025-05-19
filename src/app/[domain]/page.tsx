@@ -1,4 +1,3 @@
-import { getSiteByDomain } from "@/lib/actions/page";
 import { notFound } from "next/navigation";
 import EditorProvider from "../providers/editor-provider";
 import SiteEditor from "../components/editor/site-editor";
@@ -16,7 +15,19 @@ function LoadingState() {
 async function Page({ params }: { params: Promise<{ domain: string }> }) {
   const { domain } = await params;
 
-  const response = await getSiteByDomain(domain.toString());
+  const response = {
+    success: true,
+    private: false,
+    msg: "",
+    site: {
+      id: "site_1",
+      title: "My Site",
+      subdomain: domain,
+      previewImage: null,
+      content: "<h1>Hello World</h1>",
+      visible: true,
+    },
+  };
   if (!response.success) return notFound();
 
   if (response.private) {
@@ -31,12 +42,12 @@ async function Page({ params }: { params: Promise<{ domain: string }> }) {
 
   return (
     <div>
-      <Script
+      {/* <Script
         defer
         src={process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL}
         data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
         data-tag={domain}
-      />
+      /> */}
       <Suspense fallback={<LoadingState />}>
         <EditorProvider siteDetails={response.site} siteId={response.site.id}>
           <SiteEditor siteId={response.site.id} liveMode />

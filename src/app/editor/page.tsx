@@ -1,13 +1,11 @@
-import { db } from "@/lib/db";
 import EditorProvider from "@/app/providers/editor-provider";
-import React from "react";
-import EditorNavigation from "../../components/editor/editor-navigation";
-import { auth } from "@clerk/nextjs/server";
+import React, { use } from "react";
+import EditorNavigation from "../components/editor/editor-navigation";
 import SiteEditor from "@/app/components/editor/site-editor";
-import { RedirectToSignIn } from "@clerk/nextjs";
 import LeftSidebar from "@/app/components/editor/editor-sidebar/left-sidebar";
 import RightSidebar from "@/app/components/editor/editor-sidebar/right-sidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import NotFoundPage from "@/app/[domain]/[slug]/page";
 
 type Props = {
   params: Promise<{
@@ -16,18 +14,24 @@ type Props = {
 };
 
 const Page = async ({ params }: Props) => {
-  const session = await auth();
+  const session = {
+    userId: "user_2",
+  }
 
   const { siteId } = await params;
-  const siteDetails = await db.page.findFirst({
-    where: {
+  const siteDetails = {
+      userId: "user_2",
       id: siteId,
-    },
-  });
+      title: "Hello World!",
+      subdomain: "gbg",
+      previewImage: "",
+      content: {},
+      visible: true,
+    }
 
   // TODO: Display access denied page, add ability for users to request access (?)
   if (!siteDetails || !(session.userId === siteDetails.userId)) {
-    return <RedirectToSignIn />;
+    return <NotFoundPage />;
   }
 
   return (

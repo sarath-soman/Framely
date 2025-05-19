@@ -14,7 +14,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
-import { createSite } from "@/lib/actions/page";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -49,7 +48,18 @@ export default function NewPageModal() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      const res = await createSite(data);
+      const res = {
+        success: true,
+        msg: "",
+        site: {
+          id: "site_1",
+          title: data.title,
+          subdomain: data.subdomain,
+          previewImage: null,
+          content: "<h1>Hello World</h1>",
+          visible: true,
+        },
+      }
       if (res.success === false) {
         toast.error("Error", { description: res.msg });
       } else if (res.site) {

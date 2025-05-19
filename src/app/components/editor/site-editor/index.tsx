@@ -1,6 +1,5 @@
 "use client";
 
-import { getSiteDetails } from "@/lib/actions/page";
 import { useEditor } from "@/app/providers/editor-provider";
 import { Button } from "@/components/ui/button";
 import clsx from "clsx";
@@ -29,7 +28,17 @@ function SiteEditor({ siteId, liveMode }: Props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getSiteDetails(siteId);
+      const response = {
+        success: true,
+        msg: "",
+        content: JSON.stringify([
+          {
+            id: "1",
+            type: "text",
+            content: "Hello World",
+          },
+        ]),
+      }
       if (response.success === false) {
         toast.error("Error", { description: response.msg as string });
         return;
