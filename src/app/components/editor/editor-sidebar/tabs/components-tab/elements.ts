@@ -17,7 +17,7 @@ import {
   SquareDashed,
   Text,
 } from "lucide-react";
-import H1Component from "../../../site-editor/editor-components/plugins/h1";
+import H1Component from "../../../site-editor/editor-components/plugins/h1-plugin";
 
 Registry.registerComponent(H1Component.metadata.id, H1Component);
 

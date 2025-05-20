@@ -22,10 +22,13 @@ export type IComponentMetadata = {
   icon: LucideIcon;
 };
 
+// TODO: How should we handle this? Every component would have its own props type
+type Props = any;
+
 export type IComponentData = {
   id: string;
   displayName: string;
-  loader: React.LazyExoticComponent<() => JSX.Element>;  
+  loader: React.LazyExoticComponent<(props: Props) => JSX.Element>;  
 };
 
 export type IControlPanel = {

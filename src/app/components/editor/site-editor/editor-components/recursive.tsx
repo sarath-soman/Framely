@@ -2,7 +2,7 @@ import TextComponent from "./text";
 import Container from "./container";
 import ImageElement from "./image";
 import { EditorElement } from "@/lib/editor/component";
-import React from "react";
+import React, { Suspense } from "react";
 import { Registry } from "@/lib/editor/registry";
 import ElementWrapper from "./element-wrapper";
 
@@ -26,10 +26,12 @@ function Recursive({ element }: Props) {
 
   const component = Registry.getComponent(element.type);
   if (component) {
-    const Component = component.component.component;
+    const Component = component.component.loader;
     return (
       <ElementWrapper element={element}>
-        <Component element={element} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Component element={element} />
+        </Suspense>
       </ElementWrapper>
     );
   }

@@ -12,7 +12,7 @@ const H1Component: IComponent = {
   },
   component: {
     id: "h1",
-    loader: React.lazy(() => import("./h1-plugin")),
+    loader: React.lazy(() => import("./h1")),
     displayName: "H1",
   },
   element: {
