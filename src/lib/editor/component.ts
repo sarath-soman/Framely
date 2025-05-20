@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC, JSX } from "react";
 import { CategoryTypes, ElementTypes } from "../constants";
 import { LucideIcon } from "lucide-react";
 
@@ -25,12 +25,7 @@ export type IComponentMetadata = {
 export type IComponentData = {
   id: string;
   displayName: string;
-  component: GenericComponent<{
-    element: EditorElement;
-  }>;
-  preview?: GenericComponent<{
-    element: EditorElement;
-  }>;  
+  loader: React.LazyExoticComponent<() => JSX.Element>;  
 };
 
 export type IControlPanel = {
