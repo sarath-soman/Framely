@@ -1,23 +1,14 @@
-export type ElementTypes =
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "h5"
-  | "h6"
-  | "p"
-  | "span"
-  | "container"
-  | "section"
-  | "link"
+export type ElementTypesAlias =
+  | "component"
+  | "container"  
   | "2Col"
   | "3Col"
-  | "video"
-  | "image"
   | "__body"
   | null;
 
-export type CategoryTypes = "Container" | "Text" | "Link" | "Basic" | null;
+export type ElementTypes = string;
+
+export type CategoryTypes = "Body" | "Container" | "Text" | "Link" | "Basic" | "Atoms" |null;
 
 export const defaultStyles: React.CSSProperties = {
   backgroundPosition: "center",

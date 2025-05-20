@@ -1,13 +1,12 @@
 import { IComponent } from "./component";
 
 export class Registry {
-    
     private static components: Record<string, IComponent> = {};
 
     static registerComponent(id: string, component: IComponent) {
-        if (this.components[id]) {
-            throw new Error(`Component with id ${id} is already registered.`);
-        }
+        // if (this.components[id]) {
+        //     throw new Error(`Component with id ${id} is already registered.`);
+        // }
         this.components[id] = component;
     }
     

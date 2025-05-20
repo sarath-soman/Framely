@@ -8,6 +8,7 @@ import Recursive from "./recursive";
 import { Trash } from "lucide-react";
 import { useState } from "react";
 import { EditorElement } from "@/lib/editor/component";
+import { Registry } from "@/lib/editor/registry";
 
 type Props = { element: EditorElement };
 
@@ -21,11 +22,24 @@ function Container({ element }: Props) {
   const handleOnDrop = (e: React.DragEvent) => {
     e.stopPropagation();
     setIsDraggingOver(false);
+    //this should be component id
     const componentType = e.dataTransfer.getData(
-      "componentType",
+      "componentType"
     ) as ElementTypes;
+    const component = Registry.getComponent(componentType);
+    if (component) {
+      dispatch({
+        type: "ADD_ELEMENT",
+        payload: {
+          containerId: id,
+          elementDetails: {
+            ...component.element,
+            id: createId(),
+          },
+        },
+      });
+    }
     switch (componentType) {
-      case "h1":
       case "h2":
       case "h3":
       case "h4":
@@ -45,21 +59,16 @@ function Container({ element }: Props) {
                 color: "black",
                 ...defaultStyles,
                 fontSize:
-                  componentType === "h1"
-                    ? "2.5rem"
-                    : componentType === "h2"
-                      ? "2rem"
-                      : componentType === "h3"
-                        ? "1.75rem"
-                        : componentType === "h4"
-                          ? "1.5rem"
-                          : componentType === "h5"
-                            ? "1.25rem"
-                            : "1rem",
-                fontWeight:
-                  componentType === "h1" || componentType === "h2"
-                    ? "700"
-                    : "600",
+                  componentType === "h2"
+                    ? "2rem"
+                    : componentType === "h3"
+                    ? "1.75rem"
+                    : componentType === "h4"
+                    ? "1.5rem"
+                    : componentType === "h5"
+                    ? "1.25rem"
+                    : "1rem",
+                fontWeight: componentType === "h2" ? "700" : "600",
                 lineHeight: "1.2",
                 marginBottom: "0.5rem",
               },
@@ -311,7 +320,7 @@ function Container({ element }: Props) {
           "absolute -top-[24px] -left-[1px] rounded-none rounded-t-lg hidden cursor-default bg-primary text-primary-foreground dark:bg-background dark:text-foreground",
           {
             block: isSelected && !state.editor.liveMode,
-          },
+          }
         )}
       >
         {name}

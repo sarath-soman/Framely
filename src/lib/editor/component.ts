@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { CategoryTypes, ElementTypes } from "../constants";
+import { LucideIcon } from "lucide-react";
 
 type GenericComponent<
   P = {
@@ -10,27 +11,26 @@ type GenericComponent<
 export type IComponent = {
   metadata: IComponentMetadata;
   component: IComponentData;
-  element: EditorElement;
+  element: Omit<EditorElement, "id">;
   controlPanel: IControlPanel;
 };
 export type IComponentMetadata = {
-  icon: string;
-  type: ElementTypes;
+  label: string;
+  id: ElementTypes;
+  group: "layout" | "element";
   category: CategoryTypes;
-  designSystem: "atom" | "molecule" | "gmolecule" | "organism" | "system";
+  icon: LucideIcon;
 };
 
 export type IComponentData = {
   id: string;
+  displayName: string;
   component: GenericComponent<{
     element: EditorElement;
   }>;
-  preview: GenericComponent<{
+  preview?: GenericComponent<{
     element: EditorElement;
-  }>;
-  props?: {
-    element: EditorElement;
-  };
+  }>;  
 };
 
 export type IControlPanel = {

@@ -6,6 +6,8 @@ import LeftSidebar from "@/app/components/editor/editor-sidebar/left-sidebar";
 import RightSidebar from "@/app/components/editor/editor-sidebar/right-sidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import NotFoundPage from "@/app/[domain]/[slug]/page";
+import { Registry } from "@/lib/editor/registry";
+import H1Component from "../components/editor/site-editor/editor-components/plugins/h1";
 
 type Props = {
   params: Promise<{
@@ -13,7 +15,7 @@ type Props = {
   }>;
 };
 
-const Page = async ({ params }: Props) => {
+const Page = async ({ params }: Props) => {  
   const session = {
     userId: "user_2",
   };

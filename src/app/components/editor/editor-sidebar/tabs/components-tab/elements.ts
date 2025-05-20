@@ -1,4 +1,6 @@
 import { CategoryTypes, ElementTypes } from "@/lib/constants";
+import { IComponent, IComponentMetadata } from "@/lib/editor/component";
+import { Registry } from "@/lib/editor/registry";
 import {
   Columns2,
   Columns3,
@@ -15,21 +17,16 @@ import {
   SquareDashed,
   Text,
 } from "lucide-react";
+import H1Component from "../../../site-editor/editor-components/plugins/h1";
 
-export const elements: {
-  label: string;
-  id: ElementTypes;
-  group: "layout" | "element";
-  category: CategoryTypes;
-  icon: LucideIcon;
-}[] = [
-  {
-    label: "Heading 1",
-    id: "h1",
-    group: "element",
-    category: "Text",
-    icon: Heading1,
-  },
+Registry.registerComponent(H1Component.metadata.id, H1Component);
+
+const h1: IComponent | null = Registry.getComponent("h1");
+if (!h1) {
+  throw new Error("H1 component not found in registry");
+}
+export const elements: IComponentMetadata[] = [
+  h1.metadata,
   {
     label: "Heading 2",
     id: "h2",
