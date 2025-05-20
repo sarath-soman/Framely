@@ -1,7 +1,7 @@
-import { EditorElement } from "@/app/providers/editor-provider";
 import TextComponent from "./text";
 import Container from "./container";
 import ImageElement from "./image";
+import { EditorElement } from "@/lib/editor/component";
 
 type Props = {
   element: EditorElement;

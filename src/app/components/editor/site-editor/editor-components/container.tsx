@@ -1,5 +1,5 @@
 "use client";
-import { EditorElement, useEditor } from "@/app/providers/editor-provider";
+import { useEditor } from "@/app/providers/editor-provider";
 import { Badge } from "@/components/ui/badge";
 import { defaultStyles, ElementTypes } from "@/lib/constants";
 import { createId } from "@paralleldrive/cuid2";
@@ -7,6 +7,7 @@ import clsx from "clsx";
 import Recursive from "./recursive";
 import { Trash } from "lucide-react";
 import { useState } from "react";
+import { EditorElement } from "@/lib/editor/component";
 
 type Props = { element: EditorElement };
 

@@ -1,8 +1,9 @@
 "use client";
 
-import { EditorElement, useEditor } from "@/app/providers/editor-provider";
+import { useEditor } from "@/app/providers/editor-provider";
 import { JSX } from "react";
 import ElementWrapper from "./element-wrapper";
+import { EditorElement } from "@/lib/editor/component";
 
 type Props = {
   element: EditorElement;

@@ -1,26 +1,9 @@
 "use client";
 import { Dispatch, createContext, useContext, useReducer } from "react";
-import { CategoryTypes, ElementTypes } from "../../lib/constants";
 import { EditorAction } from "./editor-actions";
+import { EditorElement } from "@/lib/editor/component";
 
 export type DeviceTypes = "Desktop" | "Tablet" | "Mobile";
-
-export type EditorElement = {
-  id: string;
-  styles: React.CSSProperties;
-  name: string;
-  type: ElementTypes;
-  category: CategoryTypes;
-  content:
-    | EditorElement[]
-    | {
-        href?: string;
-        innerText?: string;
-        imageUrl?: string;
-        altText?: string;
-        destinationUrl?: string;
-      };
-};
 
 export type Editor = {
   siteId: string;

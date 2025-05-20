@@ -1,9 +1,9 @@
 "use client";
 
-import { EditorElement } from "@/app/providers/editor-provider";
 import ElementWrapper from "./element-wrapper";
 import Image from "next/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { EditorElement } from "@/lib/editor/component";
 
 type Props = {
   element: EditorElement;
