@@ -10,6 +10,7 @@ import Recursive from "./editor-components/recursive";
 import { useIsMobile } from "@/hooks/use-mobile";
 import Link from "next/link";
 import { getLink } from "@/lib/getLink";
+import { usePlugins } from "./editor-components/plugins/plugin-loader";
 
 type Props = { siteId: string; liveMode?: boolean };
 
@@ -17,6 +18,8 @@ function SiteEditor({ siteId, liveMode }: Props) {
   const { state, dispatch } = useEditor();
   const isMobile = useIsMobile();
 
+  usePlugins();
+  
   useEffect(() => {
     if (liveMode) {
       dispatch({

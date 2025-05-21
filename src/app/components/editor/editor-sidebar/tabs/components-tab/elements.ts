@@ -17,11 +17,6 @@ import {
   SquareDashed,
   Text,
 } from "lucide-react";
-import H1Component from "../../../site-editor/editor-components/plugins/h1/h1-plugin";
-import InputTextComponent from "../../../site-editor/editor-components/plugins/input-text/input-text-plugin";
-
-Registry.registerComponent(H1Component.metadata.id, H1Component);
-Registry.registerComponent(InputTextComponent.metadata.id, InputTextComponent);
 
 const pluginComponents: IComponent[] = Registry.getAllComponents();
 const pluginMetadatas: IComponentMetadata[] = pluginComponents.map(

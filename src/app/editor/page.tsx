@@ -1,18 +1,20 @@
 import EditorProvider from "@/app/providers/editor-provider";
-import React, { use } from "react";
+import React, { use, useEffect } from "react";
 import EditorNavigation from "../components/editor/editor-navigation";
 import SiteEditor from "@/app/components/editor/site-editor";
 import LeftSidebar from "@/app/components/editor/editor-sidebar/left-sidebar";
 import RightSidebar from "@/app/components/editor/editor-sidebar/right-sidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import NotFoundPage from "@/app/[domain]/[slug]/page";
+
 type Props = {
   params: Promise<{
     siteId: string;
   }>;
 };
 
-const Page = async ({ params }: Props) => {  
+const Page = async ({ params }: Props) => {
+
   const session = {
     userId: "user_2",
   };
