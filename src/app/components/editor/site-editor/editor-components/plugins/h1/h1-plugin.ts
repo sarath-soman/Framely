@@ -8,7 +8,7 @@ const H1Component: IComponent = {
     id: "h1",
     group: "element",
     category: "Text",
-    icon: Heading1,    
+    icon: Heading1,
   },
   component: {
     id: "h1",
@@ -17,23 +17,26 @@ const H1Component: IComponent = {
   },
   element: {
     styles: {
-      color: "#000000",
+      color: "black",
+      fontSize: "2.5rem",
+      fontWeight: "700",
+      lineHeight: "1.2",
+      marginBottom: "0.5rem",
+      objectFit: "cover",
+      backgroundRepeat: "no-repeat",
       textAlign: "left",
-      fontSize: "2rem",
-
-      fontWeight: "bold",
-      textDecoration: "none",
+      opacity: "100%",
     },
     name: "Heading 1",
     type: "h1",
     category: "Text",
     content: {
-      innerText: "Heading 1",      
-    } as LeafContent,
+      innerText: "Heading 1",
+    } as LeafContent,    
   },
   controlPanel: {
     enabled: true,
-},
+  },
 };
 
 export default H1Component;

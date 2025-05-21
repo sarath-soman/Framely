@@ -17,16 +17,18 @@ import {
   SquareDashed,
   Text,
 } from "lucide-react";
-import H1Component from "../../../site-editor/editor-components/plugins/h1-plugin";
+import H1Component from "../../../site-editor/editor-components/plugins/h1/h1-plugin";
+import InputTextComponent from "../../../site-editor/editor-components/plugins/input-text/input-text-plugin";
 
 Registry.registerComponent(H1Component.metadata.id, H1Component);
+Registry.registerComponent(InputTextComponent.metadata.id, InputTextComponent);
 
-const h1: IComponent | null = Registry.getComponent("h1");
-if (!h1) {
-  throw new Error("H1 component not found in registry");
-}
+const pluginComponents: IComponent[] = Registry.getAllComponents();
+const pluginMetadatas: IComponentMetadata[] = pluginComponents.map(
+  (component) => component.metadata
+);
 export const elements: IComponentMetadata[] = [
-  h1.metadata,
+  ...pluginMetadatas,
   {
     label: "Heading 2",
     id: "h2",

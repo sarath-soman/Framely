@@ -133,6 +133,18 @@ const SettingsTab = () => {
                     />
                   </div>
                 );
+                case "Input":
+                return (
+                  <div className="flex flex-col gap-2">
+                    <p className="text-muted-foreground">Binding</p>
+                    <Textarea
+                      id="innerText"
+                      placeholder="Enter text..."
+                      onChange={handleCustomValuesChange}
+                      value={state.editor.selectedElement.content.innerText}
+                    />
+                  </div>
+                );
               case "Basic":
                 switch (state.editor.selectedElement.type) {
                   case "image":

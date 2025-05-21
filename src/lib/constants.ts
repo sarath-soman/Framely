@@ -8,7 +8,7 @@ export type ElementTypesAlias =
 
 export type ElementTypes = string;
 
-export type CategoryTypes = "Body" | "Container" | "Text" | "Link" | "Basic" | "Atoms" |null;
+export type CategoryTypes = "Body" | "Container" | "Text" | "Link" | "Basic" | "Input" | "Atoms" |null;
 
 export const defaultStyles: React.CSSProperties = {
   backgroundPosition: "center",
