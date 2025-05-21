@@ -22,4 +22,5 @@ export const categoriesWithCustomSettings: CategoryTypes[] = [
   "Text",
   "Link",
   "Basic",
+  "Input",
 ];

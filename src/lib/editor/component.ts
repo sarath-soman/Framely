@@ -51,6 +51,7 @@ export type LeafContent = {
   imageUrl?: string;
   altText?: string;
   destinationUrl?: string;
+  value?: string;
 };
 
 // Registry.registerComponent("id", In)
